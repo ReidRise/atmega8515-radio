@@ -27,7 +27,7 @@ sleep_ms:
     ms_la: LDI r23, 1
     ms_l0: LDI r24, 1
     ms_l1: LDI r25, 1
-    ms_l2: LDI r26, 5
+    ms_l2: LDI r26, 3
     ms_l3: LDI r27, 100
     ms_l4: DEC r27
     NOP
@@ -49,9 +49,9 @@ sleep_s:
     LDI r22, 1
     la: LDI r23, 1
     l0: LDI r24, 1
-    l1: LDI r25, 6
-    l2: LDI r26, 90
-    l3: LDI r27, 240
+    l1: LDI r25, 2
+    l2: LDI r26, 255
+    l3: LDI r27, 255
     l4: DEC r27
     NOP
     BRNE l4

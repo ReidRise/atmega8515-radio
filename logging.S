@@ -48,6 +48,18 @@ ReadLoop1:
     RJMP ReadLoop1
 
 Done:
-    POP r16
     POP r17
+    POP r16
     RET
+
+USART_Receive:
+    ; Wait for data to be received
+    ;SBIS UCSRA, RXC
+    SBIS 0x0B, 7
+    RJMP USART_Receive
+    ; Get and return received data from buffer
+    IN r16, 0x0C
+    RET
+
+.org 0x800
+USART_rx_buff:

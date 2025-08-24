@@ -22,7 +22,5 @@ BACK:
 
 .org 0x400
 welcome:
-    .db " THIS IS AN EXAMPLE LOG "
+    .db "WELCOME TO THE ATMEGA8515 RADIO "
     NOP
-
-
