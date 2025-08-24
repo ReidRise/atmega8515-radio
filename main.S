@@ -1,0 +1,28 @@
+RJMP main
+.import atmega8515.S
+.import logging.S
+
+main:
+    setup_stack 
+    RCALL setup_timer
+    
+    LDI r17, 0x00 ; Baud Rate set to 9600 for 8Mhz
+    LDI r16, 0x05 ; Baud Rate set to 9600 for 8Mhz
+    RCALL USART_Init
+    LDI R16, 0x55
+
+BACK:
+    COM R16
+    OUT 0x18, r16
+    LDI r31, welcome(HIGH)
+    LDI r30, welcome(LOW)
+    RCALL ReadLoop
+    RCALL sleep_s
+    RJMP BACK
+
+.org 0x400
+welcome:
+    .db " THIS IS AN EXAMPLE LOG "
+    NOP
+
+
