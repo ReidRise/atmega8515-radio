@@ -1,4 +1,6 @@
 RJMP main
+
+
 .import atmega8515.S
 .import logging.S
 
@@ -17,10 +19,14 @@ BACK:
     LDI r31, welcome(HIGH)
     LDI r30, welcome(LOW)
     RCALL ReadLoop
+    LDI r31, help(HIGH)
+    LDI r30, help(LOW)
+    RCALL ReadLoop
     RCALL sleep_s
     RJMP BACK
 
 .org 0x400
 welcome:
-    .db "WELCOME TO THE ATMEGA8515 RADIO "
-    NOP
+    .db "WELCOME TO THE ATMEGA8515 RADIO\n"
+help:
+    .db "\tHelp Menu:\n\t[1] start\n\t[2] stop\n"
