@@ -1,6 +1,5 @@
 RJMP main
 
-
 .import atmega8515.S
 .import logging.S
 
@@ -15,7 +14,7 @@ main:
 
 BACK:
     COM R16
-    OUT 0x18, r16
+    OUT $PORTB, r16
     LDI r31, welcome(HIGH)
     LDI r30, welcome(LOW)
     RCALL ReadLoop
