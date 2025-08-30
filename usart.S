@@ -1,7 +1,7 @@
 USART_Init:
 ; Set baud Rate
     OUT $UBRRH, r17 
-    OUT $URBBL, r16 
+    OUT $UBRRL, r16 
 
 ; Store current value to avoid bashing
     PUSH r16
@@ -32,7 +32,7 @@ ReadLoop:
 
 ; Load next byte from flash to r16
 ReadLoop1:
-    LPM r16, Z+         
+    LPM r16, Z+
     LDI r17, 0x00
     SUB r16, r17
     BREQ Done

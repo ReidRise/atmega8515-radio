@@ -1,7 +1,7 @@
 RJMP main
 
 .import atmega8515.S
-.import logging.S
+.import usart.S
 
 main:
     setup_stack 
@@ -15,11 +15,11 @@ main:
 BACK:
     COM R16
     OUT $PORTB, r16
-    LDI r31, welcome(HIGH)
-    LDI r30, welcome(LOW)
+    LDI Z(HIGH), welcome(HIGH)
+    LDI Z(LOW), welcome(LOW)
     RCALL ReadLoop
-    LDI r31, help(HIGH)
-    LDI r30, help(LOW)
+    LDI Z(HIGH), help(HIGH)
+    LDI Z(LOW), help(LOW)
     RCALL ReadLoop
     RCALL sleep_s
     RJMP BACK
