@@ -4,8 +4,8 @@
 .define DDRE   0x06
 .define ACSR   0x08
 .define UBRRL  0x09
-.define UCSRB  0x0b
-.define UCSRA  0x0a
+.define UCSRB  0x0a
+.define UCSRA  0x0b
 .define UDR    0x0c
 .define SPCR   0x0d
 .define SPSR   0x0e

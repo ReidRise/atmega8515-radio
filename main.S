@@ -24,7 +24,6 @@ BACK:
     RCALL sleep_s
     RJMP BACK
 
-.org 0x400
 welcome:
     .db "WELCOME TO THE ATMEGA8515 RADIO\n"
 help:

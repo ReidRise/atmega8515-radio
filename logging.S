@@ -1,34 +1,29 @@
 USART_Init:
-; Set baud rate
-
-; Load r17 to URBBH 
-    OUT 0x20, r17 
-; Load r16 to URBBL 
-    OUT 0x09, r16 
+; Set baud Rate
+    OUT $UBRRH, r17 
+    OUT $URBBL, r16 
 
 ; Store current value to avoid bashing
     PUSH r16
-    PUSH r17 
 
 ; Enable receiver and transmitter
     LDI r16, 0b00011000
-    OUT 0x0a, r16
+    OUT $UCSRB, r16
 
 ; Set frame format: 8data, 1stop bit
     LDI r16, 0b10001110
-    OUT 0x20, r16
-    POP r17
+    OUT $UCSRC, r16
     POP r16
     RET
 
 USART_Transmit:
 
 ; Wait for empty transmit buffer
-    SBIS 0x0B, 5 ; UCSRA, UDRE
+    SBIS $UCSRB, 5
     RJMP USART_Transmit
 
 ; Put data (r16) into buffer, sends the data
-    OUT 0x0C, r16
+    OUT $UDR, r16
     RET
 
 ReadLoop:
@@ -54,11 +49,10 @@ Done:
 
 USART_Receive:
     ; Wait for data to be received
-    ;SBIS UCSRA, RXC
-    SBIS 0x0B, 7
+    SBIS $UCSRA, 7
     RJMP USART_Receive
     ; Get and return received data from buffer
-    IN r16, 0x0C
+    IN r16, $UDR
     RET
 
 .org 0x800
