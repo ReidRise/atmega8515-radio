@@ -1,6 +1,7 @@
 RJMP main
 
 .import atmega8515.S
+.import common.S 
 .import usart.S
 
 main:

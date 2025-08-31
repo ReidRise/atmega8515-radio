@@ -54,6 +54,3 @@ USART_Receive:
     ; Get and return received data from buffer
     IN r16, $UDR
     RET
-
-.org 0x800
-USART_rx_buff:
