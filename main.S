@@ -2,7 +2,7 @@
 .import ivt.S
 
 ; Safely past IVT start code
-.org 0x20
+.org 0x22
 .import atmega8515.S
 .import common.S 
 .import usart.S

@@ -45,3 +45,6 @@ RJMP main ; Reset Handler
 
 .org 0x1e
 ;RJMP EE_RDY ; EEPROM Ready Handler
+
+.org 0x20
+;RJMP SPM_RDY
